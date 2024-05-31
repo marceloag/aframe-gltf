@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aframe modelos 3D</title>
+    <link
+      href="https://fonts.cdnfonts.com/css/pokemon-solid"
+      rel="stylesheet"
+    />
+    <!-- Cargar Aframe -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <!-- Cargar Ambientes predefinidos -->
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene
+      webxr="optionalFeatures:  hit-test;"
+      ar-hit-test="target:#mew;"
+      stats
+    >
+      <a-entity
+        text="value: Pokemon; color: yellow; align: center; wrapCount: 20; font: exo2bold"
+        position="0 1.5 -1"
+        scale="1 1 1"
+      >
+      </a-entity>
+
+      <!-- Carga el modelo gltf -->
+      <a-entity
+        id="mew"
+        gltf-model="url(./model/mew.gltf)"
+        position="1 6 -20"
+        scale=".1 .1 .1"
+        rotation="0 0 0"
+        animation="property: rotation; to: 3 0 0; dur: 2000; easing: linear; loop: true; dir: alternate"
+      ></a-entity>
+      <!-- animation="property: object3D.position.y; to: 3.2; dir: alternate; dur: 2000; loop: true" -->
+
+      <!-- Carga el ambiente de bosque -->
+      <a-entity environment="preset: forest; dressingAmount: 20"></a-entity>
+      <!-- Carga Camara -->
+      <!-- <a-camera
+        position="0 1 0"
+        look-controls
+        wasd-controls
+        animation="property: rotation; to: 0 380 0; dir: reverse; dur: 50000; loop: true"
+      >
+        <a-cursor></a-cursor>
+      </a-camera> -->
+
+      <!-- Rigged -->
+      <a-entity id="rig" position="0 6 0">
+        <a-entity id="camera" camera look-controls></a-entity>
+      </a-entity>
+
+      <!-- Cargar Audio -->
+      <a-assets>
+        <audio src="./assets/pokemon.mp3" autoplay preload></audio>
+      </a-assets>
+    </a-scene>
+  </body>
+</html>
